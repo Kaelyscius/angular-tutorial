@@ -6,7 +6,8 @@ import { MonPremierComponent } from './mon-premier/mon-premier.component';
 import { AppareilComponent } from './appareil/appareil.component';
 // Pour pouvoir utiliser le two-way binding
 import { FormsModule } from '@angular/forms';
-
+// Utilisation du service
+import { AppareilService } from './services/appareil.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     // Pour pouvoir utiliser le two-way binding
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AppareilService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

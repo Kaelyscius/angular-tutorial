@@ -6,4 +6,12 @@
   <h4 [ngStyle]="{color: getColor()}">Appareil : {{ appareilName }} -- Statut : {{ getStatus() }}</h4>
   <!--Pour pouvoir utiliser le two-way binding-->
   <input type="text" class="form-control" [(ngModel)]="appareilName">
+
+  <!--Bouton pour éteindre et allumer un seul appareil-->
+  <button class="btn btn-sm btn-success"
+          *ngIf="appareilStatus === 'éteint'"
+          (click)="onSwitch()">Allumer</button>
+  <button class="btn btn-sm btn-danger"
+          *ngIf="appareilStatus === 'allumé'"
+          (click)="onSwitch()">Eteindre</button>
 </li>
