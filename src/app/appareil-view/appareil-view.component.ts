@@ -24,7 +24,13 @@ export class AppareilViewComponent implements OnInit {
     );
   });
 
-  constructor(private appareilService: AppareilService) { }
+  constructor(private appareilService: AppareilService) {
+    setTimeout(
+      () => {
+        this.isAuth = true;
+      }, 4000
+    );
+  }
 
   ngOnInit() {
     this.appareils = this.appareilService.appareils;

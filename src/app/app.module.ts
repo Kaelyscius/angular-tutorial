@@ -39,6 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
+  // ici on met les services afin de pouvoir les utiliser
   providers: [
     AppareilService,
     AuthService,
