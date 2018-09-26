@@ -1,0 +1,53 @@
+<!--<div class="container">-->
+
+<!--<div class="row">-->
+
+<!--<div class="col-xs-12">-->
+
+<!--<h2>Mes appareils</h2>-->
+
+<!--<ul class="list-group">-->
+<!--&lt;!&ndash;<app-appareil appareilName="Machine à laver"></app-appareil>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-appareil appareilName="Frigo"></app-appareil>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-appareil appareilName="Ordinateur"></app-appareil>&ndash;&gt;-->
+
+<!--&lt;!&ndash;On peut directement bind des données sur les inputs&ndash;&gt;-->
+<!--<app-appareil [appareilName]="appareilOne" [appareilStatus]="'éteint'"></app-appareil>-->
+<!--<app-appareil [appareilName]="appareilTwo" [appareilStatus]="'allumé'"></app-appareil>-->
+<!--<app-appareil [appareilName]="appareilThree" [appareilStatus]="'éteint'"></app-appareil>-->
+<!--</ul>-->
+
+<!--<button class="btn btn-success"-->
+<!--[disabled]="!isAuth"-->
+<!--(click)="onAllumer()">Tout allumer</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Mes appareils</h2>
+      <p>Mis à jour : {{ lastUpdate | async | date: 'yMMMMEEEEd' | uppercase }}</p>
+      <ul class="list-group">
+
+        <app-appareil  *ngFor="let appareil of appareils; let i = index"
+                       [appareilName]="appareil.name"
+                       [appareilStatus]="appareil.status"
+                       [index]="i"
+                       [id]="appareil.id"></app-appareil>
+      </ul>
+      <button class="btn btn-success"
+
+              [disabled]="!isAuth"
+
+              (click)="onAllumer()">Tout allumer</button>
+
+      <button class="btn btn-danger"
+
+              [disabled]="!isAuth"
+
+              (click)="onEteindre()">Tout éteindre</button>
+    </div>
+  </div>
+</div>
