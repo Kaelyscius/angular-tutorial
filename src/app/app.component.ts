@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs';
+import 'rxjs/add/observable/interval';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  secondes: number;
+  counterSubscription: Subscription;
+
+  ngOnInit() {
+    const counter = Observable.interval(1000);
+    this.counterSubscription = counter.subscribe(
+      (value) => {
+        this.secondes = value;
+      },
+      (error) => {
+        console.log('Uh-oh, an error occurred! : ' + error);
+      },
+      () => {
+        console.log('Observable complete!');
+      }
+    );
+  }
+  // Permet de détruire une action d'un observable pour ne pas avoir en mémoire toujours les données.
+  ngOnDestroy() {
+    this.counterSubscription.unsubscribe();
   }
 }
